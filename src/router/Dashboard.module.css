@@ -1,0 +1,46 @@
+.wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dashboard_content{
+    font-size: 7vh;
+    padding: 3vh 3vh;
+}
+
+.g5_content{
+    font-size: 3vh;
+    padding-bottom: 3vh;
+}
+
+.block_menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 3vh;
+    padding-bottom: 3vh;
+    gap: 2vh;/* Khoảng cách đều nhau giữa các hàng và cột */
+    flex-wrap: wrap; /* Để các mục tự xuống dòng */
+    width: 50%;
+}
+
+.items_menu{
+    display: flex;
+    margin-top: 5vh;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 14vw;
+    font-size: medium;
+    flex-direction: column;
+}
+
+.items_img_menu{    
+    width: 90%;
+    height: auto;
+    margin: 2vh 0vh;
+}
+
