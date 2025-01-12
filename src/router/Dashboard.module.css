@@ -6,6 +6,15 @@
     flex-direction: column;
 }
 
+.img_menu{
+    position: fixed;
+    top: 6vh;
+    left: 2vh;
+    height: 5vh;
+    width: 5vw;
+    cursor: pointer;
+}
+
 .dashboard_content{
     font-size: 7vh;
     padding: 3vh 3vh;

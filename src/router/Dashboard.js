@@ -1,5 +1,6 @@
 import styles from "./Dashboard.module.css";
 import { useNavigate } from "react-router-dom";
+import Menu from "../layout/components/Menu/Menu";
 
 function Dashboard() {
   const items = [
@@ -29,31 +30,35 @@ function Dashboard() {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.dashboard_content}>Dashboard</div>
-      <div className={styles.g5_content}>Make By Group 5</div>
-      <div className={styles.block_menu}>
-        {items.map((item) => {
-          let img = imgs.find((img) => img.name === item.name);
-          // Tìm img có tên trùng vs tên của item
-          //Mục đích là muốn ảnh nào tương ứng với nội dung đó
-          return (
-            <div
-              onClick={() => handleClick(item)}
-              key={item.path}
-              className={styles.items_menu}
-            >
-              <img
-              src={img?.src}
-              alt={img.name}
-              className={styles.items_img_menu}
-              />
-              {item.name}
-            </div>
-          );
-        })}
+   <>
+      <Menu/>
+      <div className={styles.wrapper}>
+        <img className={styles.img_menu} src="/Menu.png" alt="Menu_img" />
+        <div className={styles.dashboard_content}>Dashboard</div>
+        <div className={styles.g5_content}>Make By Group 5</div>
+        <div className={styles.block_menu}>
+          {items.map((item) => {
+            let img = imgs.find((img) => img.name === item.name);
+            // Tìm img có tên trùng vs tên của item
+            //Mục đích là muốn ảnh nào tương ứng với nội dung đó
+            return (
+              <div
+                onClick={() => handleClick(item)}
+                key={item.path}
+                className={styles.items_menu}
+              >
+                <img
+                  src={img?.src}
+                  alt={img.name}
+                  className={styles.items_img_menu}
+                />
+                {item.name}
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
+   </>
   );
 }
 

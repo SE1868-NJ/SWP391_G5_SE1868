@@ -1,0 +1,47 @@
+.wrapper{
+    position: fixed;
+    top: 6.8vh;
+    width: 23%;
+    background: rgba(3, 3, 216, 0.986);
+    z-index: 1;
+    /* z-index: 1 để nó đè lên hình ở dưới
+    cụ thể là hình Menu có z-index nhỏ hơn sẽ bị đè xuốngxuống */
+}
+
+.img_sidebar_menu{
+    height: 3vh;
+    width: 4vh;
+    margin-right: 2vh;
+    cursor: pointer;
+}
+
+.sidebar_menu{
+    width: 100%;
+    background: rgb(1, 1, 77);
+}
+
+
+.items_sidebar_menu{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 1.6vw;
+}
+
+.ul{
+    margin-left: 3vw;
+    padding: 0;
+    line-height: 0.5;
+    cursor: pointer;
+    /* line-height là khoảng cách giữa các dòng */
+}
+
+.content_sidebar_G5{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color: white;
+    font-size: 1.5vw;
+    margin-right: 2vh;
+    padding: 1vh 0vh;
+}
