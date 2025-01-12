@@ -34,6 +34,10 @@
     line-height: 0.5;
     cursor: pointer;
     /* line-height là khoảng cách giữa các dòng */
+
+    &:hover{
+        text-decoration: underline;
+    }
 }
 
 .content_sidebar_G5{

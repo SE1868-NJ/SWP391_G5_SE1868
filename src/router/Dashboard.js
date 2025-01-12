@@ -1,5 +1,7 @@
 import styles from "./Dashboard.module.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 import Menu from "../layout/components/Menu/Menu";
 
 function Dashboard() {
@@ -29,11 +31,26 @@ function Dashboard() {
     navigate(item.path);
   };
 
+  let [display, setDisplay] = useState(false);
+  let [forceUpdate, setForceUpdate] = useState(false);
+
+  const handleClickDisplay = () => {
+      setDisplay(!display);    
+      setForceUpdate(!forceUpdate);
+  };
+
+  console.log(display)
+  console.log(forceUpdate)
   return (
-   <>
-      <Menu/>
+    <>
+    {display && <Menu/>}
       <div className={styles.wrapper}>
-        <img className={styles.img_menu} src="/Menu.png" alt="Menu_img" />
+        <img
+          onClick={() => handleClickDisplay()}
+          className={styles.img_menu}
+          src="/Menu.png"
+          alt="Menu_img"
+        />
         <div className={styles.dashboard_content}>Dashboard</div>
         <div className={styles.g5_content}>Make By Group 5</div>
         <div className={styles.block_menu}>
@@ -58,7 +75,7 @@ function Dashboard() {
           })}
         </div>
       </div>
-   </>
+    </>
   );
 }
 

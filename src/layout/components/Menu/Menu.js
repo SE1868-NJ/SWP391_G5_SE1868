@@ -1,5 +1,6 @@
 import styles from "./Menu.module.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Menu() {
   const items = [
@@ -18,8 +19,13 @@ function Menu() {
     navigate(item.path);
   };
 
+  let [display, setDisplay] = useState('')
+  const handleClickDisplay = () => {
+    setDisplay('none');
+  };
+
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} style={{display: display}}>
       <div
         style={{
           width: "100%",
@@ -30,6 +36,7 @@ function Menu() {
         }}
       >
         <img
+        onClick={() => handleClickDisplay()}
           className={styles.img_sidebar_menu}
           alt="img_sidebar_menu"
           src="/Menu.png"
@@ -38,7 +45,7 @@ function Menu() {
       <div className={styles.sidebar_menu}>
         <div className={styles.items_sidebar_menu}>
           {items.map((item) => (
-            <div className={styles.items_sidebar_menu}>
+            <div key={item.path} className={styles.items_sidebar_menu}>
               <ul className={styles.ul}>
                 <li onClick={() => handleClick(item)} key={item.path}>
                   {item.name}
