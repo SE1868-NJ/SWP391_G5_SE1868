@@ -32,18 +32,13 @@ function Dashboard() {
   };
 
   let [display, setDisplay] = useState(false);
-  let [forceUpdate, setForceUpdate] = useState(false);
-
   const handleClickDisplay = () => {
       setDisplay(!display);    
-      setForceUpdate(!forceUpdate);
   };
 
-  console.log(display)
-  console.log(forceUpdate)
   return (
     <>
-    {display && <Menu/>}
+    {display && <Menu handleClickDisplay ={handleClickDisplay}/>}
       <div className={styles.wrapper}>
         <img
           onClick={() => handleClickDisplay()}
