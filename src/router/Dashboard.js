@@ -33,7 +33,7 @@ function Dashboard() {
 
   let [display, setDisplay] = useState(false);
   const handleClickDisplay = () => {
-      setDisplay(!display);    
+      setDisplay(!display);
   };
 
   return (

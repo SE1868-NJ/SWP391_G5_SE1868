@@ -2,9 +2,11 @@ import styles from "./Menu.module.css";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState,useRef } from "react";
+import gsap from 'gsap'
 
 function Menu({ handleClickDisplay }) {
+  const conntainerRef = useRef(null);
   const menuItems = [
     {
       name: "Account Manage",
@@ -111,7 +113,8 @@ function Menu({ handleClickDisplay }) {
   };
 
   //Xử lí HandleClickDisplay đc truyền từ Dashboard sang Menu
-  const handleClickDisplayMenu = () => {
+  const handleClickDisplayMenu = async() => {
+    await gsap.to(conntainerRef.current, {duration: 0.5, width:0})
     handleClickDisplay();
   };
 
@@ -119,28 +122,17 @@ function Menu({ handleClickDisplay }) {
   const [arrowDisplay, setArrowDisplay] = useState(false);
   const handleClickArrow = (menuItem) => {
     setArrowDisplay((prevState) => ({
-      //prevState là trạng thái True hoặc False
-      // hiện tại của component trc khi bạn click
       ...prevState,
-
-      //  ...prevState là tất cả các trạng thái còn lại
-      //  chỉ thay dổi những cái mà mik vừa cập nhật,
-      //  mục đích để khi mình muốn cập nhật cái nào thì riêng cái đó,
-      //  những cái còn lại ko bị ảnh hưởng
-
       [menuItem.path]: !prevState[menuItem.path],
-      // Đảo ngược trạng thái hiển thị của mục đc người dùng click
     }));
   };
 
-  //Chuyển trang theo từng lựa chọn nhỏ Trong Chức năng Chính 
-  // theo lựa chọn của người dung khi click
   const handleClickMenuItem2 = (menuItem2) => {
     navigate(menuItem2.path);
   }
 
   return (
-    <div className={styles.container}>
+    <div ref={conntainerRef} className={styles.container}>
     <div className={styles.wrapper}>
       <div
         style={{
