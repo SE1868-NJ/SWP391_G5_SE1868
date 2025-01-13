@@ -140,6 +140,7 @@ function Menu({ handleClickDisplay }) {
   }
 
   return (
+    <div className={styles.container}>
     <div className={styles.wrapper}>
       <div
         style={{
@@ -205,6 +206,7 @@ function Menu({ handleClickDisplay }) {
         ))}
       </div>
       <div className={styles.content_sidebar_G5}>Make by Group 5</div>
+    </div>
     </div>
   );
 }
