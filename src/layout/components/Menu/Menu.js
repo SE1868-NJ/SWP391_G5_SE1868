@@ -2,27 +2,142 @@ import styles from "./Menu.module.css";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 function Menu({ handleClickDisplay }) {
-  const items = [
-    { name: "Account Manage", path: "/account_manage" },
-    { name: "Product Manage", path: "/product_manage" },
-    { name: "Transaction", path: "/transaction" },
-    { name: "Content", path: "/content" },
-    { name: "Finance", path: "/finance" },
-    { name: "Data Analysis", path: "/data_analysis" },
-    { name: "Support", path: "/support" },
+  const menuItems = [
+    {
+      name: "Account Manage",
+      path: "/account_manage",
+      subItems: [
+        {
+          name: "Manage Buyers and Sellers",
+          path: "/account_manage/manage_users",
+        },
+        {
+          name: "Approve Registration Requests",
+          path: "/account_manage/approve_requests",
+        },
+        {
+          name: "Warn or Suspend Violating Accounts",
+          path: "/account_manage/account_violations",
+        },
+      ],
+    },
+    {
+      name: "Product Manage",
+      path: "/product_manage",
+      subItems: [
+        {
+          name: "Approve Listed Products",
+          path: "/product_manage/approve_products",
+        },
+        {
+          name: "Remove Violating Products",
+          path: "/product_manage/remove_violations",
+        },
+      ],
+    },
+    {
+      name: "Transaction",
+      path: "/transaction",
+      subItems: [
+        {
+          name: "Monitor and Resolve Order Issues",
+          path: "/transaction/monitor_resolve_orders",
+        },
+        {
+          name: "Assist in Buyer-Seller Disputes",
+          path: "/transaction/Assist_in_Buyer_Seller_disputes",
+        },
+      ],
+    },
+    {
+      name: "Content",
+      path: "/content",
+      subItems: [
+        {
+          name: "Update Banners and Promotions",
+          path: "/content/update_banners_Promotions",
+        },
+      ],
+    },
+    {
+      name: "Finance",
+      path: "/finance",
+      subItems: [
+        {
+          name: "Verify and Reconcile Payments",
+          path: "/finance/Verify_and_Reconcile_payments",
+        },
+        { name: "Support Order Refunds", path: "/finance/refund_support" },
+      ],
+    },
+    {
+      name: "Data Analysis",
+      path: "/data_analysis",
+      subItems: [
+        {
+          name: "Monitor Platform Performance",
+          path: "/data_analysis/monitor_platform_performance",
+        },
+        {
+          name: "Analyze Sales Data and User Behavior",
+          path: "/data_analysis/Analyze_Sales_Data_and_User_behavior",
+        },
+      ],
+    },
+    {
+      name: "Support",
+      path: "/support",
+      subItems: [
+        {
+          name: "Respond to Customer Inquiries",
+          path: "/support/customer_support",
+        },
+        {
+          name: "Technical Support via Chat and Hotline",
+          path: "/support/technical_support_via_Chat_Hotline",
+        },
+      ],
+    },
   ];
 
+  // navigate dùng để chuyển trang
   let navigate = useNavigate();
 
   const handleClick = (item) => {
     navigate(item.path);
   };
 
-  const handleClickDisplayss = () => {
+  //Xử lí HandleClickDisplay đc truyền từ Dashboard sang Menu
+  const handleClickDisplayMenu = () => {
     handleClickDisplay();
   };
+
+  //Arrow là mũi tên trong menu
+  const [arrowDisplay, setArrowDisplay] = useState(false);
+  const handleClickArrow = (menuItem) => {
+    setArrowDisplay((prevState) => ({
+      //prevState là trạng thái True hoặc False
+      // hiện tại của component trc khi bạn click
+      ...prevState,
+
+      //  ...prevState là tất cả các trạng thái còn lại
+      //  chỉ thay dổi những cái mà mik vừa cập nhật,
+      //  mục đích để khi mình muốn cập nhật cái nào thì riêng cái đó,
+      //  những cái còn lại ko bị ảnh hưởng
+
+      [menuItem.path]: !prevState[menuItem.path],
+      // Đảo ngược trạng thái hiển thị của mục đc người dùng click
+    }));
+  };
+
+  //Chuyển trang theo từng lựa chọn nhỏ Trong Chức năng Chính 
+  // theo lựa chọn của người dung khi click
+  const handleClickMenuItem2 = (menuItem2) => {
+    navigate(menuItem2.path);
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -36,25 +151,56 @@ function Menu({ handleClickDisplay }) {
         }}
       >
         <img
-          onClick={() => handleClickDisplayss()}
+          onClick={() => handleClickDisplayMenu()}
           className={styles.img_sidebar_menu}
           alt="img_sidebar_menu"
           src="/Menu.png"
         />
       </div>
       <div className={styles.sidebar_menu}>
-        {items.map((item) => (
-          <div key={item.path} className={styles.items_sidebar_menu}>
-            <ul className={styles.ul}>
-              <li className={styles.li} onClick={() => handleClick(item)} key={item.path}>
-                {item.name}
-              </li>
-              <FontAwesomeIcon
-                  className={styles.arrow_in_menu}
-                  icon={faCaretUp}
-                  flip="vertical"
-                />
-            </ul>
+        {menuItems.map((menuItem) => (
+          <div key={menuItem.path} className={styles.items_sidebar_menu}>
+            <div className={styles.ul_block_menu}>
+              {/* Hiện ra những chức năng chính và mũi tên  */}
+              <div>
+                <ul className={styles.ul}>
+                  <li
+                    className={styles.li}
+                    onClick={() => handleClick(menuItem)}
+                    key={menuItem.path}
+                  >
+                    {menuItem.name}
+                  </li>
+                  <FontAwesomeIcon
+                    //Arrow là mũi tên trong menu
+                    onClick={() => handleClickArrow(menuItem)}
+                    className={styles.arrow_in_menu}
+                    icon={faCaretUp}
+                    flip={
+                      arrowDisplay[menuItem.path] ? "vertical" : "horizontal"
+                    }
+                  />
+                </ul>
+              </div>
+
+              {/* khi click mũi tên, nó sẽ hiện nội dung này ở bên dưới
+              nội dung này là những lựa chọn nhỏ của Chức năng chính */}
+              <div className={styles.items_subItems_menu}>
+                {arrowDisplay[menuItem.path] && (
+                  <div className={styles.subItems_menu}>
+                    {menuItem.subItems.map((menuItem2) => (
+                      <div
+                        onClick={() => handleClickMenuItem2(menuItem2)}
+                        key={menuItem2.path}
+                        className={styles.menu_item2}
+                      >
+                        {menuItem2.name}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         ))}
       </div>
