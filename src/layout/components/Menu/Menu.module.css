@@ -1,133 +1,143 @@
+/*nền thanh menu */
 .container{
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 23vw;
-    padding:10px 0;
-    background: rgb(1, 1, 77);
-    z-index: 5;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    animation: dis 0.5s ease-in-out;
-}
-.wrapper {
-  top: 6.8vh;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   width: 23vw;
-  background: rgba(3, 3, 216, 0.986);
-  z-index: 1;
-  /* z-index: 1 để nó đè lên hình ở dưới
-    cụ thể là hình Menu có z-index nhỏ hơn sẽ bị đè xuốngxuống */
+  padding:10px 0;
+  background: rgb(14, 39, 79);
+  z-index: 5;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  animation: dis 0.5s ease-in-out;
 }
+
+/*Box menu */
+.wrapper {
+position: absolute;
+top: 3%;
+left: 50%;
+transform: translate(-50%, 0%); /* Căn giữa cả ngang và dọc */
+
+width: 18vw; /* Giảm kích thước */
+background: rgb(3, 31, 53);
+z-index: 1;
+
+/* Các kiểu trang trí khác */
+padding: 1rem; /* Thêm khoảng cách bên trong (tùy chọn) */
+border-radius: 8px; /* Tùy chọn nếu muốn góc bo tròn */
+}
+
+.img_sidebar_home {
+height: 5vh;
+width: 5vh;
+margin-left: 0vh;
+cursor: pointer;
+}
+
 .img_sidebar_menu {
-  height: 3vh;
-  width: 4vh;
-  margin-right: 2vh;
-  cursor: pointer;
+height: 7vh;
+width: 7vh;
+margin-right: 0vh;
+cursor: pointer;
 }
 
 .sidebar_menu {
-  width: 100%;
-  background: rgb(1, 1, 77);
+width: 100%;
+background: rgb(3, 31, 53);
 }
 
 .items_sidebar_menu {
-  display: flex;
-  flex-direction: column;
-  color: white;
-  font-size: 1.6vw;
+display: flex;
+flex-direction: column;
+color: white;
+font-size: 1.6vw;
+margin-top: 1vh;
 }
 
 .ul_block_menu {
-  display: flex;
-  flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 .ul {
-  padding: 0;
-  line-height: 0.5;
-  /* line-height là khoảng cách giữa các dòng */
+padding: 0;
+line-height: 0.6;
+/* line-height là khoảng cách giữa các dòng */
 }
 
 .li {
-  position: relative;
-  left: 3vw;
-  display: inline-block;
-  /* Hoặc inline-flex, inline */
-  width: auto; /* Để nội dung xác định chiều rộng */
-  cursor: pointer;
+position: relative;
+left: 1.5vw;
+display: inline-block;
+/* Hoặc inline-flex, inline */
+width: auto; /* Để nội dung xác định chiều rộng */
+cursor: pointer;
+transition: font-weight 0.3s ease; /* Hiệu ứng mượt */
 
-  &:hover {
-    text-decoration: underline;
-  }
-
-  /* Thêm dấu chấm tròn bằng ::before */
-  &::before {
-    content: "•"; /* Nội dung dấu chấm */
-    color: rgb(255, 255, 255); /* Màu của dấu chấm */
-    font-size: 4vh;
-    position: absolute; /* Đặt vị trí dấu chấm */
-    left: -2vw; /* Điều chỉnh vị trí ngang */
-    top: -0.5vh; /* Điều chỉnh vị trí dọc */
-  }
+&:hover {
+  font-weight: bold; /* Tô đậm khi hover */
 }
 
+} 
+
 .arrow_in_menu {
-  position: relative;
-  cursor: pointer;
-  position: absolute;
-  right: 2vh;
+position: relative;
+cursor: pointer;
+position: absolute;
+right: 3vh;
 }
 
 .subItems_menu {
-  display: flex;
-  flex-direction: column;
-  padding-left: 6vh;
+display: flex;
+flex-direction: column;
+padding-left: 6vh;
 }
 
 .items_subItems_menu {
-  display: flex;
-  font-size: 1vw;
-  color: white;
+display: flex;
+font-size: 1vw;
+color: white;
 }
 
 .menu_item2 {
-  cursor: pointer;
-  padding: 0.2vw;
-  position: relative; /* Thêm thuộc tính ms dùng dcd Before ở dưới
+cursor: pointer;
+padding: 0.2vw;
+position: relative; /* Thêm thuộc tính ms dùng dcd Before ở dưới
 
 
-  /* Thêm dấu chấm tròn bằng ::before */
-  &::before {
-    content: "•"; /* Nội dung dấu chấm */
-    color: rgb(159, 255, 14); /* Màu của dấu chấm */
-    font-size: 3vh;
-    position: absolute; /* Đặt vị trí dấu chấm */
-    left: -1.1vw; /* Điều chỉnh vị trí ngang */
-    top: -0.5vh; /* Điều chỉnh vị trí dọc */
-  }
+/* Thêm dấu chấm tròn bằng ::before */
+&::before {
+  content: "•"; /* Nội dung dấu chấm */
+  color: rgb(255, 255, 255); /* Màu của dấu chấm */
+  font-size: 3vh;
+  position: absolute; /* Đặt vị trí dấu chấm */
+  left: -1.1vw; /* Điều chỉnh vị trí ngang */
+  top: -0.5vh; /* Điều chỉnh vị trí dọc */
+}
 
-  &:hover {
-    text-decoration: underline;
-    margin-bottom: 0.3vh;
-    color: aqua;
-  }
+&:hover {
+  font-weight: bold; /* Tô đậm khi hover */
+  margin-bottom: 0.3vh;
+  color: aqua;
+}
 }
 
 .content_sidebar_G5 {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  color: white;
-  font-size: 1.5vw;
-  margin-right: 2vh;
-  padding: 1vh 0vh;
+display: flex;
+justify-content: end;
+align-items: center;
+color: white;
+font-size: 1.5vw;
+margin-right: 4vh;
+padding: 1vh 0vh;
 }
 @keyframes dis {
-  from {
-    width:0;
-  }
-  to {
-    width: 23vw;
-  }
+from {
+  width:0;
+}
+to {
+  width: 23vw;
+}
 }

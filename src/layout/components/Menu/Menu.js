@@ -13,15 +13,15 @@ function Menu({ handleClickDisplay }) {
       path: "/account_manage",
       subItems: [
         {
-          name: "Manage Buyers and Sellers",
+          name: "Manage Account",
           path: "/account_manage/manage_users",
         },
         {
-          name: "Approve Registration Requests",
+          name: "Registration Requests",
           path: "/account_manage/approve_requests",
         },
         {
-          name: "Warn or Suspend Violating Accounts",
+          name: "Warn or Suspend",
           path: "/account_manage/account_violations",
         },
       ],
@@ -31,12 +31,12 @@ function Menu({ handleClickDisplay }) {
       path: "/product_manage",
       subItems: [
         {
-          name: "Approve Listed Products",
+          name: "Products Requests",
           path: "/product_manage/approve_products",
         },
         {
-          name: "Remove Violating Products",
-          path: "/product_manage/remove_violations",
+          name: "Remove Products",
+          path: "/product_manage/remove_products",
         },
       ],
     },
@@ -45,12 +45,12 @@ function Menu({ handleClickDisplay }) {
       path: "/transaction",
       subItems: [
         {
-          name: "Monitor and Resolve Order Issues",
-          path: "/transaction/monitor_resolve_orders",
+          name: "Order Issue",
+          path: "/transaction/orders_Issue",
         },
         {
-          name: "Assist in Buyer-Seller Disputes",
-          path: "/transaction/Assist_in_Buyer_Seller_disputes",
+          name: "Transaction dispute",
+          path: "/transaction/Transaction_disputes",
         },
       ],
     },
@@ -59,8 +59,8 @@ function Menu({ handleClickDisplay }) {
       path: "/content",
       subItems: [
         {
-          name: "Update Banners and Promotions",
-          path: "/content/update_banners_Promotions",
+          name: "Banners and Promotions",
+          path: "/content/banners_Promotions",
         },
       ],
     },
@@ -80,12 +80,12 @@ function Menu({ handleClickDisplay }) {
       path: "/data_analysis",
       subItems: [
         {
-          name: "Monitor Platform Performance",
-          path: "/data_analysis/monitor_platform_performance",
+          name: "Platform Performance",
+          path: "/data_analysis/platform_performance",
         },
         {
-          name: "Analyze Sales Data and User Behavior",
-          path: "/data_analysis/Analyze_Sales_Data_and_User_behavior",
+          name: "Sales Data and User Behavior",
+          path: "/data_analysis/Sales_Data_and_User_behavior",
         },
       ],
     },
@@ -94,12 +94,12 @@ function Menu({ handleClickDisplay }) {
       path: "/support",
       subItems: [
         {
-          name: "Respond to Customer Inquiries",
+          name: "Customer Inquiries",
           path: "/support/customer_support",
         },
         {
-          name: "Technical Support via Chat and Hotline",
-          path: "/support/technical_support_via_Chat_Hotline",
+          name: "Technical Support",
+          path: "/support/technical_support",
         },
       ],
     },
@@ -134,22 +134,35 @@ function Menu({ handleClickDisplay }) {
   return (
     <div ref={conntainerRef} className={styles.container}>
     <div className={styles.wrapper}>
-      <div
-        style={{
-          width: "100%",
-          height: "5vh",
-          display: "flex",
-          justifyContent: "end",
-          alignItems: "center",
-        }}
-      >
-        <img
-          onClick={() => handleClickDisplayMenu()}
-          className={styles.img_sidebar_menu}
-          alt="img_sidebar_menu"
-          src="/Menu.png"
-        />
-      </div>
+
+    <div
+      style={{
+        width: "100%",
+        height: "5vh",
+        display: "flex",
+        justifyContent: "space-between", /* Căn đều hai bên */
+        alignItems: "center", /* Căn giữa theo trục dọc */
+      }}
+    >
+  {/* Home icon */}
+      <img
+        onClick={() => handleClickDisplayMenu()}
+        className={styles.img_sidebar_home}
+        alt="img_sidebar_home"
+        src="/Home.png"
+      />
+
+  {/* Menu icon */}
+      <img
+        onClick={() => handleClickDisplayMenu()}
+        className={styles.img_sidebar_menu}
+        alt="img_sidebar_menu"
+        src="/MenuIn.png"
+      />
+    </div>
+
+
+
       <div className={styles.sidebar_menu}>
         {menuItems.map((menuItem) => (
           <div key={menuItem.path} className={styles.items_sidebar_menu}>

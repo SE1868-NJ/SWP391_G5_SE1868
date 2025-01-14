@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import Menu from "../layout/components/Menu/Menu";
 
+
 function Dashboard() {
   const items = [
     { name: "Account Manage", path: "/account_manage" },
@@ -33,12 +34,12 @@ function Dashboard() {
 
   let [display, setDisplay] = useState(false);
   const handleClickDisplay = () => {
-      setDisplay(!display);
+    setDisplay(!display);
   };
 
   return (
     <>
-    {display && <Menu handleClickDisplay ={handleClickDisplay}/>}
+      {display && <Menu handleClickDisplay={handleClickDisplay} />}
       <div className={styles.wrapper}>
         <img
           onClick={() => handleClickDisplay()}
@@ -51,20 +52,20 @@ function Dashboard() {
         <div className={styles.block_menu}>
           {items.map((item) => {
             let img = imgs.find((img) => img.name === item.name);
-            // Tìm img có tên trùng vs tên của item
-            //Mục đích là muốn ảnh nào tương ứng với nội dung đó
             return (
               <div
                 onClick={() => handleClick(item)}
                 key={item.path}
                 className={styles.items_menu}
               >
-                <img
-                  src={img?.src}
-                  alt={img.name}
-                  className={styles.items_img_menu}
-                />
-                {item.name}
+                <div className={styles.item_content}>
+                  <img
+                    src={img?.src}
+                    alt={img.name}
+                    className={styles.items_img_menu}
+                  />
+                  <span>{item.name}</span>
+                </div>
               </div>
             );
           })}
