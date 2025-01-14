@@ -183,7 +183,7 @@ function Menu({ handleClickDisplay }) {
                     className={styles.arrow_in_menu}
                     icon={faCaretUp}
                     flip={
-                      arrowDisplay[menuItem.path] ? "vertical" : "horizontal"
+                      arrowDisplay[menuItem.path] ? "horizontal" : "vertical"
                     }
                   />
                 </ul>
