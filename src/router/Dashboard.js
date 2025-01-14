@@ -26,6 +26,7 @@ function Dashboard() {
     { name: "Support", src: "/Support.png" },
   ];
 
+
   let navigate = useNavigate();
 
   const handleClick = (item) => {
@@ -69,6 +70,12 @@ function Dashboard() {
               </div>
             );
           })}
+        </div>
+        <div className={styles.g4_content}><br/> Hotline: SE1868
+          <br/>
+        </div>
+        <div className={styles.g4_content}> địa chỉ : phòng 413 Tòa Beta Đại học FPT Hòa Lạc - Thạch Thất Hà Nội <br/>
+        <br/>
         </div>
       </div>
     </>

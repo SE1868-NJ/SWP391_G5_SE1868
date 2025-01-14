@@ -1,9 +1,15 @@
 .dashboard_content {
+    display: flex; /* Kích hoạt Flexbox */
     font-size: 10vh;
+    justify-content: center;
     padding: 3vh 3vh;
-    background-color: #f0f0f0;
+    background-color: #969696;
     border-radius: 10px; 
     font-weight: bold; 
+    width: 100vw;
+    min-height: 3vh;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -27,6 +33,20 @@
 .dashboard_content {
     font-size: 7vh;
     padding: 3vh 3vh;
+}
+
+.g4_content {
+    display: flex; /* Kích hoạt Flexbox */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    background-color: #484747;
+    -webkit-text-fill-color: #f0f0f0;
+    
+    /* Kéo nền ra hết 2 bên và xuống dưới */
+    width: 100vw;
+    min-height: 3vh;
+    margin: 0;
+    padding: 0;
 }
 
 .g5_content {
