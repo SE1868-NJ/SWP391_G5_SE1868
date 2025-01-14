@@ -2,7 +2,7 @@ import styles from "./Dashboard.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-import Menu from "../layout/components/Menu/Menu";
+import Menu from "../../layout/Menu/Menu";
 
 
 function Dashboard() {
